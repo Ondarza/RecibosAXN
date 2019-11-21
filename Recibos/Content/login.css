@@ -1,0 +1,33 @@
+﻿body, html {
+    background-color: #F0F0F0;
+    font-family: Helvetica;
+    font-size: 18px;
+}
+
+#formLogin {
+    background-color: white;
+    width: 50%;
+    margin: 100px auto;
+    border: 1px solid green;
+    box-shadow: gray 5px 5px;
+    padding-bottom: 20px;
+}
+
+#imgLogin {
+    content: url(/Imagenes//usuario.png);
+    width: 30%;
+    margin: auto;
+}
+
+table{
+    margin:auto;
+}
+
+#btnIngresar {
+    background-color: #009AF0;
+    margin-top: 10px;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    font-size: 20px;
+}
