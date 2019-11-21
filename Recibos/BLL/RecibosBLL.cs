@@ -110,7 +110,7 @@ namespace Recibos.BLL
         {
             RecibosController controller = new RecibosController();
 
-            return controller.GetRecibos(id);
+            return controller.GetRecibos(id, true);
         }
 
         public ReciboDTO CargarRecibo(int id)
@@ -120,14 +120,22 @@ namespace Recibos.BLL
             WebRequest webRequest = WebRequest.Create(url + id.ToString());
             webRequest.Method = "GET";
             HttpWebResponse webResponse = null;
-            webResponse = (HttpWebResponse)webRequest.GetResponse();
-            string result = null;
-            using (Stream stream = webResponse.GetResponseStream())
+
+            try
             {
-                StreamReader sr = new StreamReader(stream);
-                result = sr.ReadToEnd();
-                sr.Close();
-                recibo = new JavaScriptSerializer().Deserialize<ReciboDTO>(result);
+                webResponse = (HttpWebResponse)webRequest.GetResponse();
+                string result = null;
+                using (Stream stream = webResponse.GetResponseStream())
+                {
+                    StreamReader sr = new StreamReader(stream);
+                    result = sr.ReadToEnd();
+                    sr.Close();
+                    recibo = new JavaScriptSerializer().Deserialize<ReciboDTO>(result);
+                }
+            }
+            catch(Exception e)
+            {
+                Console.Write(e.Message);
             }
             return recibo != null ? recibo : null;
         }

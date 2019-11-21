@@ -124,9 +124,10 @@ namespace Recibos.Controllers
             return db.Recibo.Count(e => e.idRecibo == id) > 0;
         }
 
-        public List<ReciboDTO> GetRecibos(int id)
+        [ResponseType(typeof(List<Recibo>))]
+        public List<ReciboDTO> GetRecibos(int id, bool x)
         {
-            return db.Recibo.Where(w=> (w.idUsuario == id)).Select(s => new ReciboDTO
+            return db.Recibo.Where(w => (w.idUsuario == id)).Select(s => new ReciboDTO
             {
                 idRecibo = s.idRecibo,
                 idUsuario = s.idUsuario,
