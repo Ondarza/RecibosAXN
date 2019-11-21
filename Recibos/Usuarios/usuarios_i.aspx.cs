@@ -34,12 +34,10 @@ namespace Recibos.Usuarios
             usuario.usuario1 = txtUsuario.Text;
             usuario.correo = txtCorreo.Text;
             usuario.contra = txtPass.Text;
-
+            
             usuarioBLL.AgregarUsuario(usuario);
 
-            Session["Usuario"] = usuario;
-
-            Response.Redirect("~/Recibos/recibos_s.aspx");
+            Response.Redirect("~/login.aspx");
         }
         #endregion
     }
